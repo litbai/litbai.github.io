@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>使用 Hexo+Github 搭建个人博客 | litbai的自留地</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工作后一直想写个人博客，但由于自控力不足，迟迟没有开写。至今，工作已1年有余，工作经验确虽然也在不断提升，但是会发现很多知识并没有沉淀下来，特别是对于业务开发人员来说。当需要某方面知识的时候，还是要去现搜使用姿势。比如，使用gitbook生成静态站点，当初花了2天功夫搞定了，但并没有做沉淀，现在如果想使用gitbook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Hexo+Github 搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/index.html">
+<meta property="og:site_name" content="litbai的自留地">
+<meta property="og:description" content="工作后一直想写个人博客，但由于自控力不足，迟迟没有开写。至今，工作已1年有余，工作经验确虽然也在不断提升，但是会发现很多知识并没有沉淀下来，特别是对于业务开发人员来说。当需要某方面知识的时候，还是要去现搜使用姿势。比如，使用gitbook生成静态站点，当初花了2天功夫搞定了，但并没有做沉淀，现在如果想使用gitbook生成一个静态站点，还是要去搜具体的步骤。再比如，现在个人博客是我使用Hexo+G">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2017-12-08T15:41:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Hexo+Github 搭建个人博客">
+<meta name="twitter:description" content="工作后一直想写个人博客，但由于自控力不足，迟迟没有开写。至今，工作已1年有余，工作经验确虽然也在不断提升，但是会发现很多知识并没有沉淀下来，特别是对于业务开发人员来说。当需要某方面知识的时候，还是要去现搜使用姿势。比如，使用gitbook生成静态站点，当初花了2天功夫搞定了，但并没有做沉淀，现在如果想使用gitbook生成一个静态站点，还是要去搜具体的步骤。再比如，现在个人博客是我使用Hexo+G">
+  
+    <link rel="alternate" href="/atom.xml" title="litbai的自留地" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">litbai的自留地</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">温故而知新</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-使用Hexo+Github 搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/08/使用Hexo+Github 搭建个人博客/" class="article-date">
+  <time datetime="2017-12-08T15:19:21.000Z" itemprop="datePublished">2017-12-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用 Hexo+Github 搭建个人博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>工作后一直想写个人博客，但由于自控力不足，迟迟没有开写。至今，工作已1年有余，工作经验确虽然也在不断提升，但是会发现很多知识并没有沉淀下来，特别是对于业务开发人员来说。当需要某方面知识的时候，还是要去现搜使用姿势。比如，使用gitbook生成静态站点，当初花了2天功夫搞定了，但并没有做沉淀，现在如果想使用gitbook生成一个静态站点，还是要去搜具体的步骤。再比如，现在个人博客是我使用Hexo+Github来搭建的，其实在半年前我用Jekyll+Github搭建过个人博客，但由于没有沉淀，只记得当初搭建时踩了不少坑，所以现在才想要使用Hexo+Github从头搭建一个新的个人博客。</p>
+<blockquote><p>温故而知新</p>
+<footer><strong>孔子</strong><cite>《论语》</cite></footer></blockquote>
+<p>至此，一切从搭建个人博客开始，逐渐开始沉淀知识。本篇博客就记录了我自己使用Hexo+Github搭建个人博客的全过程。</p>
+<h3 id="一、安装Hexo"><a href="#一、安装Hexo" class="headerlink" title="一、安装Hexo"></a>一、安装Hexo</h3><h4 id="What-is-Hexo？"><a href="#What-is-Hexo？" class="headerlink" title="What is Hexo？"></a>What is Hexo？</h4><p>Hexo（<a href="https://hexo.io/）" target="_blank" rel="noopener">https://hexo.io/）</a> 是一个快速的，简单的，强大的博客框架。它的特点是：速度极快（Blazing Fase）、Markdown语法支持、一键部署（One-Commandm Deployment）、插件众多。说白了，就是你可以使用Markdown格式来写文章，然后Hexo就可以在几秒内为你生成具有精美主题的静态网页，当然它的功能不止如此。 </p>
+<a id="more"></a>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><h5 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h5><p>我是Mac电脑，所以下面的安装步骤，都是基于Mac环境的前提下进行的。</p>
+<h5 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h5><ul>
+<li>Node.js</li>
+<li>Git</li>
+</ul>
+<p>其中，可以使用 ‘node -v’ 命令来查看电脑是否已安装Node，使用 ‘git –version’ 来查看当前git版本。</p>
+<h5 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h5><p>具备了上面的前提后，使用一行命令即可安装Hexo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>如果遇到其他问题，请参考：<a href="https://hexo.io/docs/" target="_blank" rel="noopener">https://hexo.io/docs/</a></p>
+<h4 id="本机生成站点"><a href="#本机生成站点" class="headerlink" title="本机生成站点"></a>本机生成站点</h4><p>由于有gitbook的经验，所以，使用Hexo生成站点的套路，我并不陌生：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init newFolder</span><br><span class="line">$ <span class="built_in">cd</span> newFolder</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>运行上述命令后，新建的文件夹 <newfoler> 的内容如下：</newfoler></p>
+<pre><code>_config.yml  node_modules package.json scaffolds    source       themes
+</code></pre><p>紧接着，运行如下命令，启动hexo服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>浏览器打开： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>  即可看到一个Hello World页面。如果你将 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 绑定到一个内网域名，那么你的站点可在公司内部访问，如果绑定公网域名，那么你的站点即可在公网访问。</p>
+<p><strong><em> 注意：修改 _config.yml 配置文件时，在每项配置的冒号之后，需要有一个空格，否则会报错。</em></strong></p>
+<h3 id="二、关联hexo-github-pages"><a href="#二、关联hexo-github-pages" class="headerlink" title="二、关联hexo + github pages"></a>二、关联hexo + github pages</h3><h4 id="What-is-Github-Pages？"><a href="#What-is-Github-Pages？" class="headerlink" title="What is Github Pages？"></a>What is Github Pages？</h4><p>Github Pages提供静态网站托管服务，它本身不支持动态内容。它可以直接托管你的git工程，提供免费域名，也就是可以使你的静态网页，直接发布到公网。</p>
+<p>Github官网推荐使用Jekyll博客框架，并且提供了如何整合Jekyll的官方教程。但是个人感觉Hexo更为简单，而且背后的整合道理是一致的，选取哪个博客框架，看个人喜好，并没有优劣之分。</p>
+<h4 id="从头开始建立自己的网站-–-Hello-World"><a href="#从头开始建立自己的网站-–-Hello-World" class="headerlink" title="从头开始建立自己的网站 – Hello World"></a>从头开始建立自己的网站 – Hello World</h4><p>很简单易操作，参考官网示例： <a href="https://pages.github.com/" target="_blank" rel="noopener">https://pages.github.com/</a></p>
+<h4 id="Hexo-Deploy-配置"><a href="#Hexo-Deploy-配置" class="headerlink" title="Hexo Deploy 配置"></a>Hexo Deploy 配置</h4><p>deploy, 就是将内容部署到服务器。Hexo部署，仅需要一行命令即可完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>但是仅仅上述执行命令是不够的，首先，你要将部署信息告诉hexo，也就是将部署信息配置到配置文件中。</p>
+<h5 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h5><p>首先安装插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>hexo部署到github，需要在_config.yml文件中配置如下信息：</p>
+<pre><code>deploy: 
+    type: git
+    repo: &lt;origin repository url&gt;
+    branch: master
+    message: [message]
+</code></pre><p>其中，各配置项参考Hexo官方文档： <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">https://hexo.io/docs/deployment.html</a></p>
+<h5 id="第一个网站"><a href="#第一个网站" class="headerlink" title="第一个网站"></a>第一个网站</h5><p>deploy配置完成后，就可以将本地文件部署到github，执行如下步骤：</p>
+<p><strong>先在本机看一下博客效果：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> newFolder</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><strong>生成静态网页：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>执行上述命令后，就会生成public目录，里面包含了生成的css、image以及html文件。</p>
+<p><strong>deploy到github：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p><strong>去github看commit记录</strong></p>
+<p><strong>访问 username.github.io，大功告成</strong></p>
+<h5 id="以后每次部署的步骤："><a href="#以后每次部署的步骤：" class="headerlink" title="以后每次部署的步骤："></a>以后每次部署的步骤：</h5><ol>
+<li>写博客（写md文档）</li>
+<li>hexo server 本机起hexo服务，预览效果</li>
+<li>hexo clean 清除上一次生成的文件内容</li>
+<li>hexo generate  生成静态网页</li>
+<li>hexo deploy 部署到远端</li>
+<li>username.github.io 观察远端效果</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/" data-id="cjay2x6700001k732wsuy0pdc" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/08/使用Hexo+Github 搭建个人博客/">使用 Hexo+Github 搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 litbai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
