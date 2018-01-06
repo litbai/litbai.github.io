@@ -58,7 +58,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -68,6 +68,56 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Spring注解-Resource和-Autowired" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/05/Spring注解-Resource和-Autowired/" class="article-date">
+  <time datetime="2018-01-05T04:07:28.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/05/Spring注解-Resource和-Autowired/">Spring中依赖注入的两个注解@Resource和@Autowired</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很多初次接触Spring的同学，或者是初入Java坑，或者是前端、客户端岗位转后端，阅读别人代码时，都会发现，在注入时有的地方使用了@Resource，有的地方使用了@Autowired，难免会产生疑问。</p>
+<h4 id="Resource"><a href="#Resource" class="headerlink" title="@Resource"></a>@Resource</h4><p>Resource是JSR-250规范中的一个注解，用来管理容器中bean的依赖注入，完整类名为 javax.annotation.Resource，Spring实现了这个规范。 @Resource可以用在域和方法上（一般指setter方法，但是可以用在任意方法上，注意：被注解的方法需要有且只有1个参数），但是不能用到构造方法上。</p>
+<p>就Spring的实现来说，@Resource是name优先、类型作为fallback的，下面以标注在域上为例，即：如果@Resource标注在域上，则Spring会首先根据域的名字，找相同名字的Bean，会出现如下几种情况：</p>
+<ul>
+<li>找到相同名字的bean，如果类型也匹配，则成功注入，否则报错</li>
+<li>找不到同名的bean，则会根据域的类型，找相同类型的bean, 如果正好找到一个同类型的bean，则注入；如果找不到，报错（required a bean of type ‘xxx’ that could not be found.）；如果找到多个，报错（required a single bean, but x were found）</li>
+</ul>
+<p><strong>  注意：不存在多个相同名字的bean的情况，即使类型不同，因为Spring不支持这种操作 </strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/01/05/Spring注解-Resource和-Autowired/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/05/Spring注解-Resource和-Autowired/" data-id="cjc3auak200012w321gie8hv2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-使用Hexo+Github 搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -104,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/" data-id="cjay2x6700001k732wsuy0pdc" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/" data-id="cjc3auak900022w326b1i9rzf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/02/hello-world/" data-id="cjay2x66j0000k732udra3ma4" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/02/hello-world/" data-id="cjc3auajw00002w32qzneu8ug" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,15 +219,10 @@
 
   
     
-
-  
-    
-  
-    
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
     </div>
   </div>
 
@@ -185,9 +230,32 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Spring/" style="font-size: 10px;">Spring</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/05/Spring注解-Resource和-Autowired/">Spring中依赖注入的两个注解@Resource和@Autowired</a>
+          </li>
         
           <li>
             <a href="/2017/12/08/使用Hexo+Github 搭建个人博客/">使用 Hexo+Github 搭建个人博客</a>
@@ -209,7 +277,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 litbai<br>
+      &copy; 2018 litbai<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

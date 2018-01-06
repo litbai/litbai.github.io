@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring中依赖注入的两个注解@Resource和@Autowired | litbai的自留地</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很多初次接触Spring的同学，或者是初入Java坑，或者是前端、客户端岗位转后端，阅读别人代码时，都会发现，在注入时有的地方使用了@Resource，有的地方使用了@Autowired，难免会产生疑问。 @ResourceResource是JSR-250规范中的一个注解，用来管理容器中bean的依赖注入，完整类名为 ">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring中依赖注入的两个注解@Resource和@Autowired">
+<meta property="og:url" content="http://yoursite.com/2018/01/05/Spring注解-Resource和-Autowired/index.html">
+<meta property="og:site_name" content="litbai的自留地">
+<meta property="og:description" content="很多初次接触Spring的同学，或者是初入Java坑，或者是前端、客户端岗位转后端，阅读别人代码时，都会发现，在注入时有的地方使用了@Resource，有的地方使用了@Autowired，难免会产生疑问。 @ResourceResource是JSR-250规范中的一个注解，用来管理容器中bean的依赖注入，完整类名为 javax.annotation.Resource，Spring实现了这个规范。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-01-06T12:00:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring中依赖注入的两个注解@Resource和@Autowired">
+<meta name="twitter:description" content="很多初次接触Spring的同学，或者是初入Java坑，或者是前端、客户端岗位转后端，阅读别人代码时，都会发现，在注入时有的地方使用了@Resource，有的地方使用了@Autowired，难免会产生疑问。 @ResourceResource是JSR-250规范中的一个注解，用来管理容器中bean的依赖注入，完整类名为 javax.annotation.Resource，Spring实现了这个规范。">
+  
+    <link rel="alternate" href="/atom.xml" title="litbai的自留地" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">litbai的自留地</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">温故而知新</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring注解-Resource和-Autowired" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/05/Spring注解-Resource和-Autowired/" class="article-date">
+  <time datetime="2018-01-05T04:07:28.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring中依赖注入的两个注解@Resource和@Autowired
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很多初次接触Spring的同学，或者是初入Java坑，或者是前端、客户端岗位转后端，阅读别人代码时，都会发现，在注入时有的地方使用了@Resource，有的地方使用了@Autowired，难免会产生疑问。</p>
+<h4 id="Resource"><a href="#Resource" class="headerlink" title="@Resource"></a>@Resource</h4><p>Resource是JSR-250规范中的一个注解，用来管理容器中bean的依赖注入，完整类名为 javax.annotation.Resource，Spring实现了这个规范。 @Resource可以用在域和方法上（一般指setter方法，但是可以用在任意方法上，注意：被注解的方法需要有且只有1个参数），但是不能用到构造方法上。</p>
+<p>就Spring的实现来说，@Resource是name优先、类型作为fallback的，下面以标注在域上为例，即：如果@Resource标注在域上，则Spring会首先根据域的名字，找相同名字的Bean，会出现如下几种情况：</p>
+<ul>
+<li>找到相同名字的bean，如果类型也匹配，则成功注入，否则报错</li>
+<li>找不到同名的bean，则会根据域的类型，找相同类型的bean, 如果正好找到一个同类型的bean，则注入；如果找不到，报错（required a bean of type ‘xxx’ that could not be found.）；如果找到多个，报错（required a single bean, but x were found）</li>
+</ul>
+<p><strong>  注意：不存在多个相同名字的bean的情况，即使类型不同，因为Spring不支持这种操作 </strong></p>
+<a id="more"></a>
+<p>@Resource 也可以注入一组同类型的bean，例如(如果存在一个bean的名字为barServiceArr，类型为BarService，则只能注入一个bean，barServiceArr的length为1)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class FooService &#123;</span><br><span class="line">	@Resource</span><br><span class="line">	private BarService[] barServiceArr;</span><br><span class="line">	</span><br><span class="line">	@Resource</span><br><span class="line">	private Set&lt;BarService&gt; barServiceSet;</span><br><span class="line">	</span><br><span class="line">	@Resource</span><br><span class="line">	private List&lt;BarService&gt; barServiceList;</span><br><span class="line">	</span><br><span class="line">	// key类型为String，代表bean的name</span><br><span class="line">	@Resource</span><br><span class="line">	private Map&lt;String, BarService&gt; barServiceMap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Resource还可以注入well-known的bean，比如 BeanFactory, ApplicationContext, Environment, ResourceLoader, ApplicationEventPublisher, and MessageSource.</p>
+<h4 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h4><p>Autowired是Spring自身提供的注解，其功能强大。它可以用在域、构造方法、普通方法中。普通方法一般指setter方法，或者具有setter功能的其他方法，参数必须是已交由Spring管理的bean，否则启动时会报错。</p>
+<p>Autowired是类型优先的，下面以注解在域上为例：如果@Autowired注解在域上，Spring会先找同类型的bean，会出现如下几种情况：</p>
+<ul>
+<li>如果找不到，默认情况下会报错，除非使用@Autowired(required=false)；</li>
+<li>如果只找到一个，则会注入此bean；</li>
+<li>如果找到多个同类型的bean，则会再根据域的名字进行匹配，如果匹配到相同名字的bean，则进行注入，如果匹配不到，启动报错（required a single bean, but x were found）。</li>
+</ul>
+<p>@Autowired 可以注入一组同类型的bean，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class FooService &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private BarService[] barService;</span><br><span class="line">	</span><br><span class="line">	@Autowired</span><br><span class="line">	private Set&lt;BarService&gt; barServiceSet;</span><br><span class="line">	</span><br><span class="line">	@Autowired</span><br><span class="line">	private List&lt;BarService&gt; barServiceList;</span><br><span class="line">	</span><br><span class="line">	// key类型为String，代表bean的name</span><br><span class="line">	@Autowired</span><br><span class="line">	private Map&lt;String, BarService&gt; barServiceMap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果想对多个相同类型的bean进行排序，则需要BarService实现Ordered接口，或者使用@Order或者@Priority注解。</p>
+<p>如果你的service只有一个构造函数，例如下面的代码，则可以不用显示的指定@Autowired注解，Spring可以正常注入。如果有多个构造方法，且没有无参构造方法，则需要显示的指定@Autowired。当然，推荐总是显示的通过@Autowired来指定需要使用哪个构造方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// 只有1个构造方法</span><br><span class="line">@Service</span><br><span class="line">public class FooService &#123;</span><br><span class="line">	private BarService barService;</span><br><span class="line">	</span><br><span class="line">	public FooService(BarService barService) &#123;</span><br><span class="line">		this.barService = barService;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 有1个无参构造方法，多个其他构造方法</span><br><span class="line">@Service</span><br><span class="line">public class FooService &#123;</span><br><span class="line">	private BarService barService;</span><br><span class="line">	</span><br><span class="line">	// 会默认使用无参的构造方法，启动时不会报错，barService为null	public FooService() &#123;&#125;</span><br><span class="line">	</span><br><span class="line">	public FooService(BarService barService) &#123;</span><br><span class="line">		this.barService = barService;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 有多个构造方法， 没有无参的构造方法</span><br><span class="line">@Service</span><br><span class="line">public class FooService &#123;</span><br><span class="line">	private BarService barService;</span><br><span class="line">	private BazService bazService;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	public FooService(BarService barService) &#123;</span><br><span class="line">		this.barService = barService;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// 如果不显示指定Autowired，启动时会报错，当然IDE一般集成了Spring语法检测，会提示你 Class does not contain matching constructors for autowiring</span><br><span class="line">	@Autowired </span><br><span class="line">	public FooService(BarService barService, BazService bazService) &#123;</span><br><span class="line">		this.barService = barService;</span><br><span class="line">		this.bazService = bazService;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Autowired也可以注入well-known的bean，比如 BeanFactory, ApplicationContext, Environment, ResourceLoader, ApplicationEventPublisher, and MessageSource.当需要注入这些特殊的bean时，推荐使用@Autowired。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class FooService &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private BarService barService;</span><br><span class="line">	</span><br><span class="line">	@Autowired</span><br><span class="line">	private ApplicationContext context;</span><br><span class="line">	</span><br><span class="line">	@Autowired</span><br><span class="line">	private Environment environment;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外，@Autowired和@Qualifier配合，可以对注入实现更复杂的控制。具体可参考Spring官方文档，开发中比较少用到这种case。</p>
+<h4 id="如何选择？"><a href="#如何选择？" class="headerlink" title="如何选择？"></a>如何选择？</h4><p>如果需要根据name进行注入，则使用@Resource，其他情况，使用@Autowired；如果没有任何限制，个人比较喜欢使用@Autowired，因为它功能强大，还可以与其他注解（例如@Qualifier、或指定required属性）一起配合完成更精细的依赖注入。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/05/Spring注解-Resource和-Autowired/" data-id="cjc3auak200012w321gie8hv2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/08/使用Hexo+Github 搭建个人博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用 Hexo+Github 搭建个人博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Spring/" style="font-size: 10px;">Spring</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/05/Spring注解-Resource和-Autowired/">Spring中依赖注入的两个注解@Resource和@Autowired</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/08/使用Hexo+Github 搭建个人博客/">使用 Hexo+Github 搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 litbai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
