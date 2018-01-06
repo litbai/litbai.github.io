@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="litbai的自留地">
 <meta property="og:description" content="工作后一直想写个人博客，但由于自控力不足，迟迟没有开写。至今，工作已1年有余，工作经验确虽然也在不断提升，但是会发现很多知识并没有沉淀下来，特别是对于业务开发人员来说。当需要某方面知识的时候，还是要去现搜使用姿势。比如，使用gitbook生成静态站点，当初花了2天功夫搞定了，但并没有做沉淀，现在如果想使用gitbook生成一个静态站点，还是要去搜具体的步骤。再比如，现在个人博客是我使用Hexo+G">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-12-08T15:41:27.000Z">
+<meta property="og:updated_time" content="2018-01-06T14:04:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Hexo+Github 搭建个人博客">
 <meta name="twitter:description" content="工作后一直想写个人博客，但由于自控力不足，迟迟没有开写。至今，工作已1年有余，工作经验确虽然也在不断提升，但是会发现很多知识并没有沉淀下来，特别是对于业务开发人员来说。当需要某方面知识的时候，还是要去现搜使用姿势。比如，使用gitbook生成静态站点，当初花了2天功夫搞定了，但并没有做沉淀，现在如果想使用gitbook生成一个静态站点，还是要去搜具体的步骤。再比如，现在个人博客是我使用Hexo+G">
@@ -59,7 +59,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -146,11 +146,22 @@
 <li>hexo deploy 部署到远端</li>
 <li>username.github.io 观察远端效果</li>
 </ol>
+<h4 id="md文件中插入图片"><a href="#md文件中插入图片" class="headerlink" title="md文件中插入图片"></a>md文件中插入图片</h4><p>仔细看其public文件夹，并没有images文件夹，每次执行hexo clean，会删除public文件夹。那么怎样在md文件中插入图片，使其正常显示呢？</p>
+<p>步骤如下：</p>
+<ul>
+<li>修改配置文件，_config.yml，设置   post_asset_folder: true</li>
+<li>安装可上传本地图片的插件：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再次执行  hexo new “xx” 时，在source/_posts文件夹除了生成一个 xx.md文件外，还会生成 xx 文件夹。</li>
+<li>然后在xx.md文件中，直接使用插入图片的命令即可： <code>![image](xx/img.jpg)</code></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/" data-id="cjc3auak900022w326b1i9rzf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/" data-id="cjc3ejfqr00030q32pgxwq40r" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -160,7 +171,7 @@
 <nav id="article-nav">
   
     <a href="/2018/01/05/Spring注解-Resource和-Autowired/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
           Spring中依赖注入的两个注解@Resource和@Autowired
@@ -170,7 +181,7 @@
   
   
     <a href="/2017/12/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -207,7 +218,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
     </div>
@@ -217,9 +228,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/06/every-programmer-should-know-about-character/">Every Programmer Should Know About Character</a>
+          </li>
         
           <li>
             <a href="/2018/01/05/Spring注解-Resource和-Autowired/">Spring中依赖注入的两个注解@Resource和@Autowired</a>
