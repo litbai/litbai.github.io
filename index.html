@@ -69,6 +69,257 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-使用VisualVM监控程序状态" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/使用VisualVM监控程序状态/" class="article-date">
+  <time datetime="2018-05-20T15:21:42.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/使用VisualVM监控程序状态/">使用VisualVM监控程序状态</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Visual-VM"><a href="#Visual-VM" class="headerlink" title="Visual VM"></a>Visual VM</h3><p>Visual VM 是1.6版本之后， jdk自带的一个JVM性能监控工具，以可视化的方式向开发者展示JVM的各种运行时信息，包括CPU、内存、线程、GC等，方便开发者进行故障定位以及性能调优。</p>
+<p>Visual VM具有如下功能：</p>
+<ul>
+<li>监控本地或远程java进程</li>
+<li>显示JVM参数配置及运行时环境配置（系统属性）</li>
+<li>动态监视内存、CPU、类、线程信息</li>
+<li>线程dump、内存dump，生成快照</li>
+<li>分析已有的head dump文件（如通过jmap -dump:format=b,file=xxx pid生成的hprof文件）</li>
+<li>性能分析，包括内存分配、方法调用时间和频率</li>
+<li>插件机制，包括常用的VisualGC、BTrace插件</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/20/使用VisualVM监控程序状态/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/" data-id="cjhf0xutx000cav32j0wfneyb" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVMTI/">JVMTI</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-factory-method-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/01/factory-method-pattern/" class="article-date">
+  <time datetime="2018-05-01T10:51:05.000Z" itemprop="datePublished">2018-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/01/factory-method-pattern/">工厂方法模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>设计模式提供了一个可重用的解决方案，用来解决软件开发过程中重复出现的问题，以构建可重用、可扩展以及可维护的面向对象软件。</p>
+<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>工厂方法模式定义了一个创建对象的接口，但由子类决定要实例化的的类是哪一个。工厂方法模式将对象实例化的操作延迟到子类中实现。</p>
+<h3 id="要解决的问题"><a href="#要解决的问题" class="headerlink" title="要解决的问题"></a>要解决的问题</h3><ol>
+<li>复杂对象的创建</li>
+<li>对象实例化操作延迟到子类，由子类可决定实例化的具体类是哪一个</li>
+</ol>
+<h3 id="描述的解决方案"><a href="#描述的解决方案" class="headerlink" title="描述的解决方案"></a>描述的解决方案</h3><ol>
+<li>专门定义一个接口，用来创建对象</li>
+<li>客户端调用这个接口，得到一个对象，而不是直接调用目标类的构造器</li>
+</ol>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>工厂方法模式将创建对象的操作单独抽取出来，由子类来决定具体实例化的类是哪一个，从而使客户端不必与具体对象绑定在一起，增强了灵活性。</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/01/factory-method-pattern/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/01/factory-method-pattern/" data-id="cjhf0xutl0005av32zv8l2s5t" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-decorator-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/21/decorator-pattern/" class="article-date">
+  <time datetime="2018-04-21T02:56:35.000Z" itemprop="datePublished">2018-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/21/decorator-pattern/">装饰者模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>设计模式提供了一个可重用的解决方案，用来解决软件开发过程中重复出现的问题，以构建可重用、可扩展以及可维护的面向对象软件。</p>
+<h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>装饰者模式允许为某些对象动态的添加责任或增加功能，而不影响该类的其他对象。</p>
+<h3 id="可以解决的问题"><a href="#可以解决的问题" class="headerlink" title="可以解决的问题"></a>可以解决的问题</h3><ol>
+<li>运行期动态的给对象增强功能</li>
+<li>提供了除采用继承扩展功能之外的另一个选择</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/04/21/decorator-pattern/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/21/decorator-pattern/" data-id="cjhf0xuta0002av32b7yztlo1" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DigitalOcean搭建Shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/27/DigitalOcean搭建Shadowsocks/" class="article-date">
+  <time datetime="2018-03-27T06:04:24.000Z" itemprop="datePublished">2018-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/27/DigitalOcean搭建Shadowsocks/">DigitalOcean搭建Shadowsocks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ss-安装说明"><a href="#ss-安装说明" class="headerlink" title="ss 安装说明"></a>ss 安装说明</h3><p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E</a></p>
+<p>如果找不到    python-pip 则需要 apt-get update</p>
+<p>如果出现：</p>
+<p>File “/usr/bin/pip”, line 11, in <module><br>    sys.exit(main())<br>  File “/usr/lib/python2.7/dist-packages/pip/<strong>init</strong>.py”, line 215, in main<br>    locale.setlocale(locale.LC_ALL, ‘’)<br>  File “/usr/lib/python2.7/locale.py”, line 581, in setlocale<br>    return _setlocale(category, locale)</module></p>
+<p>locale.Error: unsupported locale setting</p>
+<p>解决这个问题的方法，配置环境变量：$ export LC_ALL=C</p>
+<p>LC_ALL=C 是为了去除所有本地化的设置，让命令能正确执行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/27/DigitalOcean搭建Shadowsocks/" data-id="cjhf0xusw0000av32yk5u1fsr" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-microservice-architecture" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/11/microservice-architecture/" class="article-date">
+  <time datetime="2018-03-11T09:18:29.000Z" itemprop="datePublished">2018-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/11/microservice-architecture/">microservice_architecture</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文是学习极客时间上杨波老师的专栏–微服务架构，所作的课堂笔记。</p>
+<p>课堂讲义：<a href="http://t.cn/RQs9iTw" target="_blank" rel="noopener">http://t.cn/RQs9iTw</a></p>
+<h3 id="微服务定义"><a href="#微服务定义" class="headerlink" title="微服务定义"></a>微服务定义</h3><p>Martin Fowler的博客中对微服务架构的定义要点：</p>
+<ol>
+<li>一种架构风格，将单体应用划分成<strong>一组小的服务</strong>，服务之间相互协作，实现业务功能；</li>
+<li>每个服务运行在<strong>独立的进程</strong>中</li>
+<li>服务间（进程间）采用<strong>轻量级的通信机制</strong>（HTTP或RPC）</li>
+<li><strong>基于业务能力构建或划分</strong>（用户服务、商品服务、店铺服务…）</li>
+<li>各服务由负责的团队进行<strong>独立的、自动化的部署</strong>，团队之间耦合度不高</li>
+<li><strong>无集中式的服务管理</strong>，每个团队可以采用自己擅长的技术栈，可以使用不同的开发语言、不同的存储机制</li>
+</ol>
+<p>参考博客地址：<a href="https://www.martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">https://www.martinfowler.com/articles/microservices.html</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/03/11/microservice-architecture/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/11/microservice-architecture/" data-id="cjhf0xutq0009av32dumdcwan" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-every-programmer-should-know-about-character" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/06/every-programmer-should-know-about-character/" class="article-date">
@@ -106,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/06/every-programmer-should-know-about-character/" data-id="cjc3ejfqi00010q32edeqwq5q" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/06/every-programmer-should-know-about-character/" data-id="cjhf0xuti0004av329hnm3lnz" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -154,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/05/Spring注解-Resource和-Autowired/" data-id="cjc3ejfqb00000q32ytir6bh3" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/05/Spring注解-Resource和-Autowired/" data-id="cjhf0xut30001av320vy8y9b0" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
@@ -201,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/" data-id="cjc3ejfqr00030q32pgxwq40r" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/08/使用Hexo+Github 搭建个人博客/" data-id="cjhf0xuts000aav32vymvjo3h" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -246,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/02/hello-world/" data-id="cjc3ejfqt00040q32t7enoro9" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/02/hello-world/" data-id="cjhf0xutn0006av32qawyrfhy" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -269,7 +520,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVMTI/">JVMTI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -279,7 +530,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Spring/" style="font-size: 10px;">Spring</a>
+      <a href="/tags/JVMTI/" style="font-size: 10px;">JVMTI</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a>
     </div>
   </div>
 
@@ -288,7 +539,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
     </div>
   </div>
 
@@ -301,19 +552,23 @@
       <ul>
         
           <li>
-            <a href="/2018/01/06/every-programmer-should-know-about-character/">Every Programmer Should Know About Character</a>
+            <a href="/2018/05/20/使用VisualVM监控程序状态/">使用VisualVM监控程序状态</a>
           </li>
         
           <li>
-            <a href="/2018/01/05/Spring注解-Resource和-Autowired/">Spring中依赖注入的两个注解@Resource和@Autowired</a>
+            <a href="/2018/05/01/factory-method-pattern/">工厂方法模式</a>
           </li>
         
           <li>
-            <a href="/2017/12/08/使用Hexo+Github 搭建个人博客/">使用 Hexo+Github 搭建个人博客</a>
+            <a href="/2018/04/21/decorator-pattern/">装饰者模式</a>
           </li>
         
           <li>
-            <a href="/2017/12/02/hello-world/">Hello World</a>
+            <a href="/2018/03/27/DigitalOcean搭建Shadowsocks/">DigitalOcean搭建Shadowsocks</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/11/microservice-architecture/">microservice_architecture</a>
           </li>
         
       </ul>

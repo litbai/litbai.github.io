@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>装饰者模式 | litbai的自留地</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="设计模式设计模式提供了一个可重用的解决方案，用来解决软件开发过程中重复出现的问题，以构建可重用、可扩展以及可维护的面向对象软件。 装饰者模式定义装饰者模式允许为某些对象动态的添加责任或增加功能，而不影响该类的其他对象。 可以解决的问题 运行期动态的给对象增强功能 提供了除采用继承扩展功能之外的另一个选择">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="装饰者模式">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/decorator-pattern/index.html">
+<meta property="og:site_name" content="litbai的自留地">
+<meta property="og:description" content="设计模式设计模式提供了一个可重用的解决方案，用来解决软件开发过程中重复出现的问题，以构建可重用、可扩展以及可维护的面向对象软件。 装饰者模式定义装饰者模式允许为某些对象动态的添加责任或增加功能，而不影响该类的其他对象。 可以解决的问题 运行期动态的给对象增强功能 提供了除采用继承扩展功能之外的另一个选择">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://yoursite.com/2018/04/21/decorator-pattern/decorator_pattern.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/21/decorator-pattern/input_stream.png">
+<meta property="og:updated_time" content="2018-05-01T10:58:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="装饰者模式">
+<meta name="twitter:description" content="设计模式设计模式提供了一个可重用的解决方案，用来解决软件开发过程中重复出现的问题，以构建可重用、可扩展以及可维护的面向对象软件。 装饰者模式定义装饰者模式允许为某些对象动态的添加责任或增加功能，而不影响该类的其他对象。 可以解决的问题 运行期动态的给对象增强功能 提供了除采用继承扩展功能之外的另一个选择">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/21/decorator-pattern/decorator_pattern.png">
+  
+    <link rel="alternate" href="/atom.xml" title="litbai的自留地" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">litbai的自留地</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">温故而知新</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-decorator-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/21/decorator-pattern/" class="article-date">
+  <time datetime="2018-04-21T02:56:35.000Z" itemprop="datePublished">2018-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      装饰者模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>设计模式提供了一个可重用的解决方案，用来解决软件开发过程中重复出现的问题，以构建可重用、可扩展以及可维护的面向对象软件。</p>
+<h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>装饰者模式允许为某些对象动态的添加责任或增加功能，而不影响该类的其他对象。</p>
+<h3 id="可以解决的问题"><a href="#可以解决的问题" class="headerlink" title="可以解决的问题"></a>可以解决的问题</h3><ol>
+<li>运行期动态的给对象增强功能</li>
+<li>提供了除采用继承扩展功能之外的另一个选择</li>
+</ol>
+<a id="more"></a>
+<h3 id="描述的解决方案"><a href="#描述的解决方案" class="headerlink" title="描述的解决方案"></a>描述的解决方案</h3><p>定义一个Decorator：</p>
+<ol>
+<li>实现被装饰对象(decorated)所属的接口(Component)，并且将所有的请求透明的转发给被装饰对象</li>
+<li>在转发请求的前后，加入其他逻辑，增强功能</li>
+<li>如有需求，可以在装饰者子类中添加新功能（新方法）</li>
+</ol>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>通过对象组合，动态的给对象增强功能。遵循了”组合优于继承”、”单一职责”的OO设计原则。</p>
+<h3 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h3><p><br></p>
+<p><img src="/2018/04/21/decorator-pattern/decorator_pattern.png" alt="Decorator_Pattern"></p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>JDK中的IO设计，采用了装饰者模式。<br><br></p>
+<p><img src="/2018/04/21/decorator-pattern/input_stream.png" alt="Input_Stream"></p>
+<p>InputStream对应Component的角色，其下面的实现类有FileInputStream、ObjectInputStream、ByteArrayInputStream、FilterInputStream等；其中，FilterInputStream充当Decorator的角色，其子类DataInputStream（添加了读取内容转换数字功能）、BufferedInputStream（添加缓冲功能）、PushBackInputSteam(添加回退重读功能)。</p>
+<p><b>javax.servlet.ServletRequestWrapper</b> 也实现了标准的装饰者模式。</p>
+<p><b>com.google.common.cache.ForwardingLoadingCache</b> 同样实现了装饰者模式。</p>
+<p><b>Tips: </b>现实中实现装饰者模式，类名多以Decorator、Wrapper结尾，这是一种偶人的约定，可以帮大家快速的识别开发者使用了装饰者模式。</p>
+<p><b>Ps: </b>现实中实现的装饰者模式，不一定完全符合标准的UML类图结构，有一些折中导致设计不完全符合装饰者模式的标准解决方案，这很正常，但它们也符合装饰模式的特征，我们一定要活学活用。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a href="https://en.wikipedia.org/wiki/Decorator_pattern" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Decorator_pattern</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/21/decorator-pattern/" data-id="cjhf0xuta0002av32b7yztlo1" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/01/factory-method-pattern/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          工厂方法模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/27/DigitalOcean搭建Shadowsocks/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">DigitalOcean搭建Shadowsocks</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVMTI/">JVMTI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVMTI/" style="font-size: 10px;">JVMTI</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/20/使用VisualVM监控程序状态/">使用VisualVM监控程序状态</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/factory-method-pattern/">工厂方法模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/21/decorator-pattern/">装饰者模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/27/DigitalOcean搭建Shadowsocks/">DigitalOcean搭建Shadowsocks</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/11/microservice-architecture/">microservice_architecture</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 litbai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

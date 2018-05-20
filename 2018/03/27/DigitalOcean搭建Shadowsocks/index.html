@@ -5,18 +5,19 @@
   
 
   
-  <title>Tag: Spring | litbai的自留地</title>
+  <title>DigitalOcean搭建Shadowsocks | litbai的自留地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="litbai的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="litbai的自留地">
-<meta property="og:url" content="http://yoursite.com/tags/Spring/index.html">
+  <meta name="description" content="ss 安装说明https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E 如果找不到    python-pip 则需要 apt-get update 如果出现： File “/usr/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DigitalOcean搭建Shadowsocks">
+<meta property="og:url" content="http://yoursite.com/2018/03/27/DigitalOcean搭建Shadowsocks/index.html">
 <meta property="og:site_name" content="litbai的自留地">
-<meta property="og:description" content="litbai的个人博客">
+<meta property="og:description" content="ss 安装说明https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E 如果找不到    python-pip 则需要 apt-get update 如果出现： File “/usr/bin/pip”, line 11, in     sys.exit(main(">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-03-28T14:36:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="litbai的自留地">
-<meta name="twitter:description" content="litbai的个人博客">
+<meta name="twitter:title" content="DigitalOcean搭建Shadowsocks">
+<meta name="twitter:description" content="ss 安装说明https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E 如果找不到    python-pip 则需要 apt-get update 如果出现： File “/usr/bin/pip”, line 11, in     sys.exit(main(">
   
     <link rel="alternate" href="/atom.xml" title="litbai的自留地" type="application/atom+xml">
   
@@ -67,40 +68,67 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/05/Spring注解-Resource和-Autowired/" class="archive-article-date">
-  <time datetime="2018-01-05T04:07:28.000Z" itemprop="datePublished">Jan 5</time>
+        <section id="main"><article id="post-DigitalOcean搭建Shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/27/DigitalOcean搭建Shadowsocks/" class="article-date">
+  <time datetime="2018-03-27T06:04:24.000Z" itemprop="datePublished">2018-03-27</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/05/Spring注解-Resource和-Autowired/">Spring中依赖注入的两个注解@Resource和@Autowired</a>
+    <h1 class="article-title" itemprop="name">
+      DigitalOcean搭建Shadowsocks
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ss-安装说明"><a href="#ss-安装说明" class="headerlink" title="ss 安装说明"></a>ss 安装说明</h3><p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E</a></p>
+<p>如果找不到    python-pip 则需要 apt-get update</p>
+<p>如果出现：</p>
+<p>File “/usr/bin/pip”, line 11, in <module><br>    sys.exit(main())<br>  File “/usr/lib/python2.7/dist-packages/pip/<strong>init</strong>.py”, line 215, in main<br>    locale.setlocale(locale.LC_ALL, ‘’)<br>  File “/usr/lib/python2.7/locale.py”, line 581, in setlocale<br>    return _setlocale(category, locale)</module></p>
+<p>locale.Error: unsupported locale setting</p>
+<p>解决这个问题的方法，配置环境变量：$ export LC_ALL=C</p>
+<p>LC_ALL=C 是为了去除所有本地化的设置，让命令能正确执行。</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/27/DigitalOcean搭建Shadowsocks/" data-id="cjhf0xusw0000av32yk5u1fsr" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/21/decorator-pattern/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          装饰者模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/11/microservice-architecture/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">microservice_architecture</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

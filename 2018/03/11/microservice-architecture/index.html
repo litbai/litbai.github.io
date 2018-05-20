@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>microservice_architecture | litbai的自留地</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文是学习极客时间上杨波老师的专栏–微服务架构，所作的课堂笔记。 课堂讲义：http://t.cn/RQs9iTw 微服务定义Martin Fowler的博客中对微服务架构的定义要点：  一种架构风格，将单体应用划分成一组小的服务，服务之间相互协作，实现业务功能； 每个服务运行在独立的进程中 服务间（进程间）采用轻量级">
+<meta name="keywords" content="微服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="microservice_architecture">
+<meta property="og:url" content="http://yoursite.com/2018/03/11/microservice-architecture/index.html">
+<meta property="og:site_name" content="litbai的自留地">
+<meta property="og:description" content="本文是学习极客时间上杨波老师的专栏–微服务架构，所作的课堂笔记。 课堂讲义：http://t.cn/RQs9iTw 微服务定义Martin Fowler的博客中对微服务架构的定义要点：  一种架构风格，将单体应用划分成一组小的服务，服务之间相互协作，实现业务功能； 每个服务运行在独立的进程中 服务间（进程间）采用轻量级的通信机制（HTTP或RPC） 基于业务能力构建或划分（用户服务、商品服务、店铺">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-04-21T04:00:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="microservice_architecture">
+<meta name="twitter:description" content="本文是学习极客时间上杨波老师的专栏–微服务架构，所作的课堂笔记。 课堂讲义：http://t.cn/RQs9iTw 微服务定义Martin Fowler的博客中对微服务架构的定义要点：  一种架构风格，将单体应用划分成一组小的服务，服务之间相互协作，实现业务功能； 每个服务运行在独立的进程中 服务间（进程间）采用轻量级的通信机制（HTTP或RPC） 基于业务能力构建或划分（用户服务、商品服务、店铺">
+  
+    <link rel="alternate" href="/atom.xml" title="litbai的自留地" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">litbai的自留地</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">温故而知新</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-microservice-architecture" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/11/microservice-architecture/" class="article-date">
+  <time datetime="2018-03-11T09:18:29.000Z" itemprop="datePublished">2018-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      microservice_architecture
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文是学习极客时间上杨波老师的专栏–微服务架构，所作的课堂笔记。</p>
+<p>课堂讲义：<a href="http://t.cn/RQs9iTw" target="_blank" rel="noopener">http://t.cn/RQs9iTw</a></p>
+<h3 id="微服务定义"><a href="#微服务定义" class="headerlink" title="微服务定义"></a>微服务定义</h3><p>Martin Fowler的博客中对微服务架构的定义要点：</p>
+<ol>
+<li>一种架构风格，将单体应用划分成<strong>一组小的服务</strong>，服务之间相互协作，实现业务功能；</li>
+<li>每个服务运行在<strong>独立的进程</strong>中</li>
+<li>服务间（进程间）采用<strong>轻量级的通信机制</strong>（HTTP或RPC）</li>
+<li><strong>基于业务能力构建或划分</strong>（用户服务、商品服务、店铺服务…）</li>
+<li>各服务由负责的团队进行<strong>独立的、自动化的部署</strong>，团队之间耦合度不高</li>
+<li><strong>无集中式的服务管理</strong>，每个团队可以采用自己擅长的技术栈，可以使用不同的开发语言、不同的存储机制</li>
+</ol>
+<p>参考博客地址：<a href="https://www.martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">https://www.martinfowler.com/articles/microservices.html</a></p>
+<a id="more"></a>
+<p>前Netflix架构总监，经过Netflix由单体应用转为微服务的整个演化的过程，提出了如下对微服务的抽象定义: 基于有界上下⽂的，松散耦合的⾯向服务的架构</p>
+<ol>
+<li>Loosely Coupled  服务可以独立的开发部署，不强依赖于其他服务</li>
+<li>Service Oriented Architecture  本质上还是SOA，是更细粒度的SOA</li>
+<li>with bounded context  有界上下文、或局部状态，每个团队或每个服务有自己的独立数据源</li>
+</ol>
+<h3 id="架构师如何权衡微服务的利弊？"><a href="#架构师如何权衡微服务的利弊？" class="headerlink" title="架构师如何权衡微服务的利弊？"></a>架构师如何权衡微服务的利弊？</h3><p>微服务的优势：</p>
+<ol>
+<li>强模块化边界   模块化演进：类、包 –&gt; 类库/组件 –&gt; 服务</li>
+<li>可独立部署</li>
+<li>技术多样性</li>
+</ol>
+<p>微服务带来的问题：</p>
+<ol>
+<li>分布式的复杂性：服务非常多，成百上千个服务</li>
+<li>最终一致性：每个团队可能有自己的数据拷贝</li>
+<li>运维复杂性：服务监控、容量规划、可靠性、稳定性，对运维的挑战极大</li>
+<li>测试复杂性：服务之间有协作时，需要协作测试</li>
+</ol>
+<h3 id="康威法则"><a href="#康威法则" class="headerlink" title="康威法则"></a>康威法则</h3><p>设计系统的组织，其产生的设计等同于组织之内、组织之间的沟通结构。用更容易理解的话来说，就是：组织形式等同系统设计。</p>
+<p>公式刚起步时，处于探索阶段，探索其模式是否有效，此时往往只有很小的开发团队，应用也是单体应用。但是随着公司业务的进步与发展，开发人员越来越多，逐渐划分为不同的团队。如果此时还是单体应用的话，就违反了康威法则，因为单体应用的设计没有体现出组织架构。</p>
+<p>这时候的解决方案是什么呢？微服务。通过微服务化，将单体应用拆分为多个应用，每个团队负责自己的应用，遵循了康威法则。</p>
+<p>所以，架构师不仅要做技术架构，同时也要掌握组织架构。</p>
+<p>这里有两篇网上推荐甚广的优秀文章：</p>
+<p>每个架构师都应该研究下康威定律：<a href="http://36kr.com/p/5042735.html" target="_blank" rel="noopener">http://36kr.com/p/5042735.html</a></p>
+<p>微服务架构的理论基础 - 康威定律：<a href="https://yq.aliyun.com/articles/8611" target="_blank" rel="noopener">https://yq.aliyun.com/articles/8611</a></p>
+<h3 id="企业应该在什么时候开始考虑引入微服务"><a href="#企业应该在什么时候开始考虑引入微服务" class="headerlink" title="企业应该在什么时候开始考虑引入微服务"></a>企业应该在什么时候开始考虑引入微服务</h3><p>微服务的适用性：企业应该在什么时候开始考虑引入微服务？</p>
+<p>个人经验：公式处于初创阶段时，单体应用架构优先。当团队达到百人级别时，就可以考虑引入微服务架构。</p>
+<p>架构：考虑单块应用优先。微服务需要前期的基础设施搭建，成本较大，而公司也处于初步探索阶段，商业模式有待验证，此时推荐采用单体应用架构，因为其复杂性更低，风险也更低。随着团队规模越来越大，开发效率逐渐受限，而此时架构师对业务领域越来越清晰，此时可以考虑逐步的拆分应用。因为此时架构师已经更加熟知业务，而且团队也有人力资源来做这件事情。</p>
+<h3 id="什么样的组织架构更适合微服务？"><a href="#什么样的组织架构更适合微服务？" class="headerlink" title="什么样的组织架构更适合微服务？"></a>什么样的组织架构更适合微服务？</h3><p>见讲义的图。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/11/microservice-architecture/" data-id="cjhf0xutq0009av32dumdcwan" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/27/DigitalOcean搭建Shadowsocks/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          DigitalOcean搭建Shadowsocks
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/06/every-programmer-should-know-about-character/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Every Programmer Should Know About Character</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVMTI/">JVMTI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVMTI/" style="font-size: 10px;">JVMTI</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/20/使用VisualVM监控程序状态/">使用VisualVM监控程序状态</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/factory-method-pattern/">工厂方法模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/21/decorator-pattern/">装饰者模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/27/DigitalOcean搭建Shadowsocks/">DigitalOcean搭建Shadowsocks</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/11/microservice-architecture/">microservice_architecture</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 litbai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
