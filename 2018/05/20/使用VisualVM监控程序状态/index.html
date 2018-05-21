@@ -19,8 +19,9 @@
 <meta property="og:image" content="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/index.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/monitor.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/remote.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/jmx.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/plugin.png">
-<meta property="og:updated_time" content="2018-05-20T16:12:56.000Z">
+<meta property="og:updated_time" content="2018-05-21T10:57:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用VisualVM监控程序状态">
 <meta name="twitter:description" content="Visual VMVisual VM 是1.6版本之后， jdk自带的一个JVM性能监控工具，以可视化的方式向开发者展示JVM的各种运行时信息，包括CPU、内存、线程、GC等，方便开发者进行故障定位以及性能调优。 Visual VM具有如下功能：  监控本地或远程java进程 显示JVM参数配置及运行时环境配置（系统属性） 动态监视内存、CPU、类、线程信息 线程dump、内存dump，生成快照">
@@ -64,9 +65,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -122,7 +123,7 @@
 <li>Visual VM 配置远程主机信息：右击“远程”选项，选择“添加远程主机”，输入远程主机IP和显示名称</li>
 <li><p>启动Visual VM</p>
 </li>
-<li><p>远程服务器运行jstatd命令： jstatd是一个监控 JVM 从创建到销毁过程中资源占用情况并提供远程监控接口的 RMI （ Remote Method Invocation ，远程方法调用）服务器程序，它是一个 Daemon 程序，要保证远程监控软件连接到本地的话需要 jstatd 始终保持运行。  jstatd运行需要通过 -J-Djava.security.policy=<em>*</em> 指定安全策略，因此我们需要在服务器上建立一个指定安全策略的文件jstatd.all.policy ，文件内容如下：</p>
+<li><p>远程服务器运行jstatd命令： jstatd是一个监控 JVM 从创建到销毁过程中资源占用情况并提供远程监控接口的 RMI （ Remote Method Invocation ，远程方法调用）服务器程序，它是一个 Daemon 程序，要保证远程监控软件连接到本地的话需要 jstatd 始终保持运行。  jstatd运行需要通过 -J-Djava.security.policy=<em>*</em> 指定安全策略，如果不指定，启动的时候会报无权限的异常。因此我们需要在服务器上建立一个指定安全策略的文件jstatd.all.policy ，文件内容如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant codebase &quot;file:$&#123;java.home&#125;/../lib/tools.jar&quot; &#123;  </span><br><span class="line">   permission java.security.AllPermission;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>在远程服务器运行如下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jstatd -J-Djava.security.policy=jstatd.all.policy</span><br></pre></td></tr></table></figure>
@@ -131,7 +132,13 @@
 <p><img src="/2018/05/20/使用VisualVM监控程序状态/remote.png" alt=""></p>
 </li>
 </ul>
-<p><strong>PS: 此种方式不能监控CPU，还需额外配置</strong></p>
+<ul>
+<li>上述配置完成后，点击“监视”Tab，会发现CPU一栏，显示“不受此JVM支持”</li>
+</ul>
+<h5 id="Tomcat配置JMX，监视CPU"><a href="#Tomcat配置JMX，监视CPU" class="headerlink" title="Tomcat配置JMX，监视CPU"></a>Tomcat配置JMX，监视CPU</h5><p>在tomcat的启动脚本中，添加如下的参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS=&apos;-Dcom.sun.management.jmxremote.port=8999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false&apos;</span><br></pre></td></tr></table></figure>
+<p>重启tomcat，右击Visual VM的远程连接，选择“添加JMX连接”，输入上述配置的端口号即可</p>
+<p><img src="/2018/05/20/使用VisualVM监控程序状态/jmx.png" alt=""></p>
 <h5 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h5><p>点击上方的“工具”tab，选择“插件”，如果提示插件地址已失效：遇到We’re sorry the java.net site has closed（我们很抱歉java.net网站已经关闭）则需如下配置：</p>
 <ul>
 <li><p>访问Visual VM 官方网站： <a href="https://visualvm.github.io/pluginscenters.html" target="_blank" rel="noopener">https://visualvm.github.io/pluginscenters.html</a> </p>
@@ -147,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/" data-id="cjhf0xutx000cav32j0wfneyb" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/20/使用VisualVM监控程序状态/" data-id="cjhg4zzl8000a7u32nbnn4hrl" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVMTI/">JVMTI</a></li></ul>
@@ -160,7 +167,7 @@
   
   
     <a href="/2018/05/01/factory-method-pattern/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Viejo</strong>
       <div class="article-nav-title">工厂方法模式</div>
     </a>
   
@@ -188,7 +195,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
       <a href="/tags/JVMTI/" style="font-size: 10px;">JVMTI</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a>
     </div>
@@ -197,7 +204,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
     </div>
@@ -207,7 +214,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
@@ -244,7 +251,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 litbai<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
